@@ -1,0 +1,313 @@
+/* src/pages/NoteDetailPage/NoteDetailPage.module.css */
+
+/* Overall container for the page */
+.pageContainer {
+  max-width: 1100px; /* Max width */
+  margin: 20px auto; /* Center with margin */
+  padding: 25px; /* Inner padding */
+  background-color: var(
+    --color-background-light
+  ); /* Light background for contrast */
+  border-radius: 8px;
+}
+
+.loadingMessage {
+  font-size: 1.2em;
+  text-align: center;
+  padding: 40px;
+  color: var(--color-text-secondary);
+}
+
+/* Header section styling */
+.header {
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--color-accent); /* Orange accent line */
+}
+
+.noteTitle {
+  font-size: 2.2em;
+  color: var(--color-accent-dark); /* Violet title */
+  margin: 0 0 5px 0; /* Adjust margins */
+}
+.noteSubject {
+  font-size: 1.1em;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Main content layout using Flexbox */
+.mainContent {
+  display: flex;
+  gap: 30px; /* Space between sidebar and main area */
+  flex-direction: column; /* Default: Stack vertically on small screens */
+}
+
+/* Sidebar for actions */
+.actionsSidebar {
+  flex: 0 0 220px; /* Don't grow, don't shrink, start at 220px wide */
+  order: 1; /* Ensure sidebar appears first in visual order on large screens */
+  background-color: var(--color-white); /* White background for sidebar */
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  height: fit-content; /* Make sidebar only as tall as its content */
+}
+.actionsSidebar h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--color-accent-dark);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 10px;
+}
+
+/* Main area for note content and discussion */
+.noteArea {
+  flex: 1; /* Allow this area to grow and take remaining space */
+  min-width: 0; /* Prevent overflow issues in flex children */
+  order: 2; /* Ensure content appears second */
+  display: flex; /* Use flexbox internally */
+  flex-direction: column; /* Stack content, meta, discussion vertically */
+  gap: 25px; /* Space between content, meta, discussion */
+}
+
+/* Style individual action buttons */
+.actionButton {
+  width: 100%; /* Make buttons fill sidebar width */
+  display: flex; /* Align icon and text */
+  align-items: center;
+  justify-content: center; /* Center content */
+  gap: 8px; /* Space between icon and text */
+  padding: 10px 15px;
+  font-size: 0.95em;
+  margin-bottom: 10px; /* Space below each button */
+}
+.actionButton:last-child {
+  margin-bottom: 0;
+}
+
+/* Specific button colors */
+.actionButton:nth-of-type(1) {
+  background-color: var(--color-accent);
+} /* Download Orange */
+.actionButton:nth-of-type(1):hover {
+  background-color: #e04a38;
+}
+.saveButton {
+  background-color: var(--color-violet);
+} /* Save Violet */
+.saveButton:hover {
+  background-color: #a82d66;
+}
+
+/* Style the user rating control block */
+.ratingControl {
+  padding: 15px;
+  border: 1px dashed var(--color-border); /* Dashed border */
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 15px; /* Space below rating */
+}
+.ratingControl h4 {
+  margin: 0 0 10px 0;
+  color: var(--color-text-primary);
+  font-size: 1em;
+}
+
+.starsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+}
+.star {
+  margin: 0 1px;
+  font-size: 1.5em; /* Make stars bigger */
+  color: grey;
+}
+.star svg {
+  display: block;
+} /* Fix potential alignment issues */
+.interactiveStar {
+  cursor: pointer;
+}
+.interactiveStar:hover {
+  color: gold;
+} /* Indicate hover */
+.interactiveStar:focus {
+  outline: 1px dotted var(--color-accent);
+} /* Focus indicator */
+.interactiveStar svg[fill="gold"] {
+  color: gold;
+} /* Filled stars */
+.interactiveStar svg:not([fill="gold"]) {
+  color: var(--color-border);
+} /* Empty stars slightly darker */
+
+/* Note Preview/Content Area */
+.notePreview,
+.metaSection,
+.discussionSection {
+  background-color: var(
+    --color-white
+  ); /* White background for content blocks */
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.notePreview h3,
+.metaSection h3,
+.discussionSection h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-accent-dark); /* Violet */
+}
+
+/* Style for pre-formatted text content */
+.contentText {
+  white-space: pre-wrap; /* Respects newlines and spaces in the text */
+  word-wrap: break-word; /* Breaks long words if necessary */
+  font-family: var(--font-body);
+  font-size: 1em;
+  line-height: 1.7; /* More spacing for readability */
+  color: var(--color-text-primary);
+  max-height: 500px; /* Limit height and add scroll if needed */
+  overflow-y: auto;
+  background-color: var(--color-background-light); /* Slight background tint */
+  padding: 15px;
+  border-radius: 4px;
+}
+
+/* Meta Section (Ratings, Author, Tags) */
+.metaSection {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.averageRating,
+.authorInfo,
+.tags {
+  font-size: 0.95em;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.averageRating span:first-child,
+.tags strong {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-right: 5px;
+}
+.ratingCount {
+  font-size: 0.9em;
+  margin-left: 5px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
+.tag {
+  background-color: var(--color-background-light);
+  color: var(--color-accent-dark); /* Violet text */
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.85em;
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+}
+
+/* Discussion Section */
+.commentsList {
+  margin-bottom: 25px;
+  max-height: 400px; /* Limit height */
+  overflow-y: auto; /* Add scrollbar if comments overflow */
+  padding-right: 10px; /* Space for scrollbar */
+}
+.noComments {
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.comment {
+  border-bottom: 1px dashed var(--color-border); /* Separator line */
+  padding: 15px 0;
+  margin-bottom: 10px;
+}
+.comment:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.85em;
+  color: var(--color-text-secondary);
+}
+.commentAuthor {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.commentText {
+  margin: 0;
+  font-size: 0.95em;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+.commentInput {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 1em;
+  font-family: var(--font-body);
+  resize: vertical;
+}
+.submitButton {
+  align-self: flex-end; /* Button to the right */
+  background-color: var(--color-accent); /* Orange */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.submitButton:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+/* --- Responsive Layout --- */
+/* On screens 900px wide or larger, put sidebar next to content */
+@media (min-width: 900px) {
+  .mainContent {
+    flex-direction: row; /* Arrange side-by-side */
+  }
+  .actionsSidebar {
+    order: 1; /* Sidebar first */
+  }
+  .noteArea {
+    order: 2; /* Note area second */
+  }
+}

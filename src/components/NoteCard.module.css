@@ -1,0 +1,92 @@
+/* src/components/NoteCard/NoteCard.module.css */
+
+/* Styles for the main card container */
+.card {
+  border: 1px solid var(--color-border); /* Use the border color variable */
+  border-radius: 8px; /* Rounded corners */
+  padding: 15px 20px; /* Inner spacing */
+  background-color: var(--color-white); /* White background */
+  cursor: pointer; /* Indicate it's clickable */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover effects */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack elements vertically */
+  gap: 8px; /* Space between stacked elements */
+  overflow: hidden; /* Prevent content from spilling out */
+}
+
+/* Style changes when hovering over the card */
+.card:hover,
+.card:focus {
+  /* Add focus style for accessibility */
+  transform: translateY(-3px); /* Slightly lift the card */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  outline: none; /* Remove default focus outline if you handle it visually */
+}
+.card:focus-visible {
+  /* Use focus-visible for keyboard users */
+  box-shadow: 0 0 0 2px var(--color-accent); /* Add an orange ring on focus */
+}
+
+/* Styles for the note title (h4) */
+.title {
+  margin: 0; /* Remove default margins */
+  font-family: var(--font-heading); /* Use Merriweather font */
+  font-size: 1.2em; /* Font size */
+  color: var(--color-accent-dark); /* Use Violet color */
+  line-height: 1.3; /* Adjust line spacing */
+  /* Prevent long titles from breaking layout badly */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Styles for the subject paragraph (p) */
+.subject {
+  margin: 0; /* Remove default margins */
+  font-size: 0.9em; /* Slightly smaller font */
+  color: var(--color-text-secondary); /* Use secondary text color */
+  font-style: italic; /* Italicize the subject */
+}
+
+/* Styles for the container holding author and date */
+.meta {
+  display: flex; /* Arrange items horizontally */
+  justify-content: space-between; /* Space them out */
+  align-items: center; /* Align vertically */
+  font-size: 0.85em; /* Small font */
+  color: var(--color-text-secondary); /* Secondary text color */
+  gap: 10px; /* Space between items if they wrap */
+  flex-wrap: wrap; /* Allow wrapping on small cards */
+}
+
+/* Styles for the author and date spans */
+.author,
+.date {
+  display: flex; /* Align icon and text */
+  align-items: center;
+  gap: 4px; /* Space between icon and text */
+}
+
+/* Styles for the rating display */
+.rating {
+  font-size: 0.9em;
+  font-weight: 600; /* Make rating slightly bolder */
+  color: var(--color-text-primary); /* Use primary text color */
+  display: flex; /* Align icon and number */
+  align-items: center;
+  gap: 4px; /* Space between icon and number */
+}
+
+/* Styles for the preview text paragraph */
+.preview {
+  font-size: 0.9em;
+  color: var(--color-text-primary);
+  margin: 5px 0 0 0; /* Add a little space above, remove bottom margin */
+  line-height: 1.4;
+  /* Limit preview text to 3 lines with ellipsis (...) */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Max number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,101 @@
+/* src/index.css */
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;600&display=swap");
+
+:root {
+  /* Color Scheme */
+  --color-white: #ffffff;
+  --color-orange: #ff5841; /* Sunset Orange */
+  --color-violet: #c53678; /* Red-Violet */
+  --color-black: #000000;
+  --color-text-primary: #333333;
+  --color-text-secondary: #555555;
+  --color-border: #dddddd;
+  --color-background-light: #f8f9fa;
+  --color-accent: var(--color-orange);
+  --color-accent-dark: var(--color-violet);
+
+  /* Fonts */
+  --font-heading: "Merriweather", serif;
+  --font-body: "Poppins", sans-serif;
+
+  /* Font settings */
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  /* Default background removed from here, applied to body */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  /* --- Background Gradient --- */
+  /* Example: Subtle gradient from light orange/pink to light greyish */
+  background: linear-gradient(135deg, #fff2f0 0%, #f8f9fa 70%, #fefefe 100%);
+  /* Adjust colors and direction (e.g., to top, 45deg) as desired */
+  /* Fallback color */
+  background-color: var(--color-background-light);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--color-accent-dark);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  font-size: 1.75em;
+}
+
+a {
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none; /* Changed from inherit for clarity */
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--color-accent-dark);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s;
+}
+button:hover {
+  background-color: var(--color-accent-dark);
+}
+button:focus,
+button:focus-visible {
+  outline: 3px solid dodgerblue;
+  outline-offset: 2px;
+}
+
+* {
+  box-sizing: border-box;
+}

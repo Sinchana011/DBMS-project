@@ -1,0 +1,146 @@
+/* src/pages/NotesListPage/NotesListPage.module.css */
+
+/* Style the main container for the page */
+.pageContainer {
+  max-width: 1200px; /* Limit maximum width */
+  margin: 20px auto; /* Center the container horizontally with some top/bottom margin */
+  padding: 20px; /* Add padding inside the container */
+}
+
+/* Style the main page title (h2) */
+.pageTitle {
+  text-align: center; /* Center the title */
+  margin-bottom: 30px; /* Space below the title */
+  color: var(--color-violet); /* Use the violet color variable */
+}
+
+/* Container for the search and filter controls */
+.controls {
+  display: flex;
+  flex-direction: column; /* Stack search/filters vertically on small screens */
+  gap: 20px; /* Space between search and filter sections */
+  margin-bottom: 30px; /* Space below the controls */
+}
+
+/* Style the search bar container */
+.searchBar {
+  display: flex; /* Arrange icon and input horizontally */
+  align-items: center; /* Align items vertically */
+  border: 1px solid var(--color-border); /* Add a border */
+  border-radius: 25px; /* Make it pill-shaped */
+  padding: 5px 15px; /* Inner padding */
+  background-color: var(--color-white); /* White background */
+}
+
+/* Style the search icon */
+.searchIcon {
+  color: var(--color-text-secondary); /* Use secondary text color */
+  margin-right: 10px; /* Space between icon and input */
+}
+
+/* Style the search input field */
+.searchInput {
+  border: none; /* Remove default border */
+  outline: none; /* Remove default focus outline */
+  flex-grow: 1; /* Allow input to take available space */
+  padding: 8px 0; /* Vertical padding */
+  font-size: 1em; /* Default font size */
+  background-color: transparent; /* Make background transparent */
+  font-family: var(--font-body); /* Ensure Poppins font */
+}
+
+/* Style the container for filter buttons */
+.filters {
+  display: flex; /* Arrange label and buttons horizontally */
+  align-items: center; /* Align items vertically */
+  gap: 10px; /* Space between buttons */
+  flex-wrap: wrap; /* Allow buttons to wrap onto the next line */
+}
+
+/* Style the "Filter by Subject:" label */
+.filters span {
+  font-weight: 600; /* Slightly bolder text */
+  color: var(--color-text-secondary); /* Use secondary text color */
+  margin-right: 5px; /* Space after the label */
+}
+
+/* Style the individual filter buttons */
+.filterButton {
+  padding: 6px 12px; /* Button padding */
+  font-size: 0.9em; /* Slightly smaller font */
+  background-color: var(--color-background-light); /* Light background */
+  color: var(--color-text-secondary); /* Secondary text color */
+  border: 1px solid var(--color-border); /* Add a border */
+  cursor: pointer;
+  border-radius: 15px; /* Rounded corners */
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s; /* Smooth transitions */
+}
+
+/* Style for filter button hover state */
+.filterButton:hover {
+  background-color: var(--color-border); /* Slightly darken on hover */
+}
+
+/* Style for the currently active filter button */
+.filterButton.activeFilter {
+  background-color: var(--color-accent); /* Use Orange background */
+  color: var(--color-white); /* White text */
+  border-color: var(--color-accent); /* Orange border */
+  font-weight: 600;
+}
+
+/* Style the grid container for the note cards */
+.notesGrid {
+  display: grid;
+  /* Create responsive columns: minimum 280px wide, fill available space */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px; /* Space between cards */
+}
+
+/* Style for the message shown when no notes are found */
+.noNotes {
+  grid-column: 1 / -1; /* Make this message span all grid columns */
+  text-align: center; /* Center the text */
+  color: var(--color-text-secondary);
+  font-size: 1.1em;
+  padding: 40px 0; /* Add some vertical padding */
+}
+
+/* --- Responsive Adjustments --- */
+/* Styles applied only on screens wider than 768px */
+@media (min-width: 768px) {
+  .controls {
+    flex-direction: row; /* Place search and filters side-by-side */
+    justify-content: space-between; /* Space them apart */
+    align-items: center; /* Align vertically */
+  }
+  .searchBar {
+    max-width: 400px; /* Limit search bar width on larger screens */
+  }
+}
+
+/* Add these styles if they are missing in src/pages/NotesListPage/NotesListPage.module.css */
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2em;
+  padding: 40px;
+  color: var(--color-text-secondary);
+}
+
+.error {
+  color: var(--color-orange); /* Use accent color for errors */
+  font-weight: 600;
+  border: 1px dashed var(--color-orange); /* Optional: Add border to error */
+  background-color: #fff0f0; /* Optional: Light reddish background */
+  border-radius: 6px;
+  margin: 20px; /* Add some margin */
+}
+
+.noNotes {
+  grid-column: 1 / -1; /* Ensure it spans grid if grid is rendered */
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 1.1em;
+  padding: 40px 0;
+}
